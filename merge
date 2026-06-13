@@ -1,0 +1,24 @@
+
+        class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    int r=m-1;
+    int lidx=n-1;
+    int midex =m+n-1;
+    for(int i = lidx;i>=0;i--){
+
+        if(r>=0&& nums1[r]>nums2[i])
+        {
+           nums1[midex]=nums1[r];
+           r--;
+        }
+        else{
+            nums1[midex]=nums2[i];
+            i--;
+        }
+        midex--;
+    }
+
+    }
+
+}
+        
