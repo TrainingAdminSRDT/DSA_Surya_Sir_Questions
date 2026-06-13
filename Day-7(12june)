@@ -1,0 +1,75 @@
+//PROGRAM 1//
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+
+             if(slow == fast)
+            return true;
+        }
+       return false;
+    }
+}
+
+//PROGRAM 2//
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode a = head;
+        ListNode b = null;
+
+        while(a != null){
+            ListNode temp = a.next;
+            a.next = b;
+            b = a;
+            a = temp;
+        }
+        return b;
+    }
+}
+//PROGRAM 3//
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        
+         while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+         }   
+            return slow;
+    }
+
+}
+//PROGRAM 4//
+class Solution {
+    public int maxDepth(TreeNode root) {
+       
+       if(root == null)
+       return 0;
+       int l = maxDepth(root.left);
+       int r = maxDepth(root.right);
+
+       return 1 + Math.max(l, r);
+
+
+    }
+}
+//PROGRAM 5//
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        return isMirror(root.left, root.right);
+    }
+
+    private boolean isMirror(TreeNode p, TreeNode q) {
+        if (p == null && q == null) return true;
+        if (p == null || q == null) return false;
+        if (p.val != q.val) return false;
+
+        return isMirror(p.left, q.right) &&
+               isMirror(p.right, q.left);
+    }
+}

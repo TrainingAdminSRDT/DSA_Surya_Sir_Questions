@@ -1,0 +1,60 @@
+//PROGRAM 1 //
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+      int k = 0;
+
+        for (int x : nums) {
+            if (k == 0 || x != nums[k - 1]) {
+                nums[k++] = x;
+            }
+        }
+
+        return k;
+    }
+}
+
+//PROGRAM 2//
+
+class Solution {
+    public int majorityElement(int[] nums) {
+          int candidate = 0;
+        int count = 0;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+
+        return candidate;
+    }
+}
+
+//PROGRAM 3//
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int currSum = 0;
+        int maxSum = nums[0];
+
+        for(int x : nums){
+           currSum += x;
+           maxSum = Math.max(maxSum, currSum);
+
+           if(currSum < 0){
+              currSum = 0;
+           }
+        }
+        return maxSum;
+
+    }
+}
+
+
