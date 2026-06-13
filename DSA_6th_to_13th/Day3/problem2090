@@ -1,0 +1,29 @@
+class problem2090 {
+   public static void main(String[] args) {
+    int nums[] = { 7 , 4, 3, 9,1, 8, 5, 2,6};
+    int k =3;
+        int sum = 0 ; 
+        int d = 2*k+1;
+        int arr[] = nums.clone();
+            for ( int i = 0 ; i < nums.length ; i++){
+            if ( i < k || i+k >=nums.length){
+                arr[i] = -1;
+            }
+            if( i < d){
+                sum += nums[i];
+            }}
+            System.out.println(sum/d);
+            arr[k]=sum/d;
+        for ( int i = k ; i < nums.length-k-1 ; i++){
+            sum = sum - nums[i-k] + nums[i+k+1];
+            arr[i+1] = sum/d;
+            
+            
+        }
+            for( int i : arr){
+                System.out.print(i+",");
+            }
+    
+   }
+        
+  }

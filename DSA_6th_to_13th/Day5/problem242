@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        char[] a1 = s.toCharArray();
+        char[] a2 = t.toCharArray();
+        Arrays.sort(a1);
+        Arrays.sort(a2);
+        int i = 0;
+        if (a1.length != a2.length ){
+            return false;
+        }
+        while( i  < a1.length){
+            if ( a1[i]==a2[i]){
+                i++;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        return true;
+    }
+}
+// time complexity = O(2nlogn) = O(nlogn)
