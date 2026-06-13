@@ -1,14 +1,17 @@
-class Solution{
-    public int reverse(int x){
-        int rev=0;
-        while(x!=0){
-            int digit= x%10;
-            x=x/10;
-            if(rev>Integer.MAX_VALUE/10|| rev<Integer.MIN_VALUE/10){
-                return 0;
-            }
-            rev=rev* 10+digit;
+class Solution {
+    public void reverseString(char[] s) {
+
+        int left = 0;
+        int right = s.length - 1;
+
+        while (left < right) {
+
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+
+            left++;
+            right--;
         }
-        return rev;
     }
 }
