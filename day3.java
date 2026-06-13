@@ -7,8 +7,8 @@ public class K_Radious_subarray {
         int l=nums.length;
         int []ans=new int[l];
         int size = 2*k+1;
-        // Arrays.fill(ans,-1);
 
+        
         if (l < size) {
             return ans;
         }
