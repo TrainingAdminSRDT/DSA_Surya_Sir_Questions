@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        long i = 1 ;
+        long j = num-1;
+        if ( num == 1){
+            return true;
+        }
+        while ( j>=i){
+             long mid = i+(j-i)/2;
+            long sq = mid*mid;
+            if ( sq == num){
+                return true;
+            }
+            else if ( sq > num){
+                 j = mid-1;
+            }
+            else{
+               i = mid+1;
+            }
+        }
+        return false;
+    }
+}

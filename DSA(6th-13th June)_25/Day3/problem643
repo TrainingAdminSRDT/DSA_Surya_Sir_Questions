@@ -1,0 +1,27 @@
+
+
+class problem643 {
+    public double findMaxAverage(int[] nums, int k) {
+        double mavg = 0;
+        int avg = 0;
+        int sum = 0;
+        int c = 1;
+        for ( int i = 0 ; i < nums.length ; i++){
+            if ( i+k == nums.length){
+                break;
+            }
+            else if ( c < k){
+                sum += nums[i];
+                c++;
+            }
+            else {
+                avg = (sum + nums[i])/k;
+                mavg = Math.max( mavg , avg);
+                c=0;
+                sum = 0;
+                i= i+2-k;
+            }
+        }
+        return mavg ;
+    }
+}
