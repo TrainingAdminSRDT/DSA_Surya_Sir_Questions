@@ -1,0 +1,20 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+         int Counter=0;
+        int Majority=0;
+         for(int i : nums){
+            if(Counter==0){
+                Majority=i;
+                Counter++;
+            }else{
+                if(Majority==i){
+                   Counter++;
+                }else{
+                    Counter--;
+                }
+            }
+            
+         } return Majority;
+    }
+}
