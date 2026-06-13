@@ -1,10 +1,12 @@
-package Day3;
+
 
 class Solution {
-    public int[] runningSum(int[] nums) {
-        for(int i=1; i<nums.length; i++){
-            nums[i]= nums[i]+ nums[i-1];
+    public int binarySearch(int[] nums, int target) {
+       for(int i=0; i<nums.length; i++){
+        if(nums[i]==target){
+           return i; 
         }
-        return nums;   
+       }
+       return target; 
     }
 }
