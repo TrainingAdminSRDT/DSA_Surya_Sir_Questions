@@ -1,28 +1,13 @@
-import java.util.Arrays;
- class Solution {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-        int i = m - 1;
-        int j = n - 1;
-        int k = m + n - 1;
-        while (j >= 0) {
-            if (i >= 0 && nums1[i] > nums2[j]) {
-                nums1[k] = nums1[i];
-                i--;
-            } else {
-                nums1[k] = nums2[j];
-                j--;
+public class Solution {
+    public int addDigits(int num) {
+        while (num >= 10) {
+            int sum = 0;
+            while (num > 0) {
+                sum = sum + (num % 10);
+                num = num / 10;
             }
-            k--;
+            num = sum;
         }
-    }
-    public static void main(String[] args) {
-        Solution solver = new Solution();
-        int[] nums1 = {1, 2, 3, 0, 0, 0};
-        int m = 3;
-        int[] nums2 = {2, 5, 6};
-        int n = 3;
-        System.out.println("Merge hone se pehle nums1: " + Arrays.toString(nums1));
-        solver.merge(nums1, m, nums2, n);
-        System.out.println("Merge hone ke baad nums1: " + Arrays.toString(nums1));
+        return num;
     }
 }
