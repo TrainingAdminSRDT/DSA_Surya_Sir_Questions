@@ -1,0 +1,191 @@
+//Intersection of two linked list
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* a  = headA;
+        ListNode* b = headB;
+
+        while(a !=b){
+            a  = a ?a->next : headB;
+            b = b? b->next : headA;
+        }
+        return a;
+    }
+};
+
+//Linked list cycle
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode* a = head;
+        ListNode* b = head;
+
+        while(b != nullptr && b->next != nullptr){
+            a = a->next;
+            b = b->next->next;
+
+
+            if(a == b) return true;
+
+        }
+        return false;
+    }
+};
+
+//Reverse linked list
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+       ListNode* prev = nullptr;
+        ListNode* curr = head;
+
+        while (curr != nullptr) {
+            ListNode* nextNode = curr->next; 
+            curr->next = prev;               
+            prev = curr;                     
+            curr = nextNode;                 
+        }
+
+        return prev;
+    }
+};
+    
+//Middle of the linked list
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* middleNode(ListNode* head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while (fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        return slow;
+
+        }
+    
+};
+
+// maximum depth of binary tree
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+         if (root == nullptr) {
+            return 0;
+        }
+
+        int left = maxDepth(root->left);
+        int right = maxDepth(root->right);
+
+        return 1 + max(left, right);
+    }
+};
+
+//Same tree
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if( p == nullptr && q == nullptr) return true;
+        if(p == nullptr || q == nullptr) return false;
+
+        if(p->val != q->val) return false;
+
+        return isSameTree(p->left , q->left) &&
+        isSameTree(p->right , q->right);
+    } 
+};
+
+//Symmetric tree
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+class Solution {
+public:
+    bool isMirror(TreeNode* left, TreeNode* right) {
+        if (left == NULL && right == NULL)
+            return true;
+
+        if (left == NULL || right == NULL)
+            return false;
+
+        return (left->val == right->val) &&
+               isMirror(left->left, right->right) &&
+               isMirror(left->right, right->left);
+    }
+
+    bool isSymmetric(TreeNode* root) {
+        if (root == NULL)
+            return true;
+
+        return isMirror(root->left, root->right);
+    }
+};
