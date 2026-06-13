@@ -72,4 +72,133 @@ class Solution {
 
 
 
-//
+//search in rotated sorted array
+class Solution {
+    public int search(int[] nums, int target) {
+      
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right) {
+
+            int mid = left + (right - left) / 2;
+
+            if (nums[mid] == target) {
+                return mid;
+            }
+
+            // Left half is sorted
+            if (nums[left] <= nums[mid]) {
+
+                if (nums[left] <= target && target < nums[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+
+            }
+            // Right half is sorted
+            else {
+
+                if (nums[mid] < target && target <= nums[right]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
+}
+//valid palindrome 
+class Solution {
+    public boolean isPalindrome(String s) {
+        
+        
+        int left = 0;
+        int right = s.length() - 1;
+
+        while (left < right) {
+
+            // Skip non-alphanumeric characters
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+                left++;
+            }
+
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+                right--;
+            }
+
+            // Compare after converting to lowercase
+            if (Character.toLowerCase(s.charAt(left)) !=
+                Character.toLowerCase(s.charAt(right))) {
+                return false;
+            }
+
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+}
+
+//intersection of two linked list
+**
+ /* Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode a = headA;
+        ListNode b = headB;
+        while(a != b){
+            a = (a!=null)  ? a.next : headB;
+            b =(b!=null)  ? b.next: headA; 
+        }
+        return a;
+    
+             
+        
+        
+    }
+}
+
+//reverse string 
+
+class Solution {
+    public void reverseString(char[] s) {
+       
+
+        int left = 0;
+        int right = s.length - 1;
+
+        while (left < right) {
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+
+            left++;
+            right--;
+        }
+    }
+}
+        
+       
+        
+
+
+    
+
+        
+    
+
