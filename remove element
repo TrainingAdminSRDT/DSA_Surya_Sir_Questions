@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+         int k = 0; // pointer for the next valid position
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != val) {
+                nums[k] = nums[i]; // place valid element at position k
+                k++;               // move k forward
+            }
+        }
+        return k;
+    }
+};
