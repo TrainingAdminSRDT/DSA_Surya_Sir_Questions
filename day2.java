@@ -1,6 +1,6 @@
 //MIN MAX IN ARRAY
 
-public class day1 {
+public class Solution {
     public static void main(String[] args) {
         int[] a = {5, 9, 95, 10, 2, 17};
         int max = a[0];
