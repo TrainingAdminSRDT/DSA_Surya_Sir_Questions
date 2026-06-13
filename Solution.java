@@ -1,12 +1,13 @@
-
-
-class Solution {
-    public int binarySearch(int[] nums, int target) {
-       for(int i=0; i<nums.length; i++){
-        if(nums[i]==target){
-           return i; 
+public class Solution {
+    public int addDigits(int num) {
+        while (num >= 10) {
+            int sum = 0;
+            while (num > 0) {
+                sum = sum + (num % 10);
+                num = num / 10;
+            }
+            num = sum;
         }
-       }
-       return target; 
+        return num;
     }
 }
