@@ -1,0 +1,114 @@
+//program 1
+ //Linked List Cycle
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;          // move 1 step
+            fast = fast.next.next;     // move 2 steps
+
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+
+
+//program 2
+//Reverse Linked List
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode curr=head;
+        ListNode prev=null;
+        while (curr!=null){
+            ListNode temp = curr.next;
+            curr.next=prev;
+            prev = curr;
+            curr=temp;
+        }
+        return prev;
+    }
+}
+
+//program 3
+//Middle of the Linked List
+
+
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode a=head;
+        ListNode b=head;
+        while(a!=null && a.next !=null){
+            a=a.next.next;
+            b=b.next;
+            
+
+        }
+    return b;    
+    }
+
+}
+
+//program 4
+// Maximum Depth of Binary Tree
+
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null)
+            return 0;
+        int l=maxDepth(root.left);
+        int r=maxDepth(root.right);
+
+    return 1+Math.max(l,r);    
+    }
+}
+
+//program 5
+// Same Tree
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        
+        // Both nodes are null
+        if (p == null && q == null) {
+            return true;
+        }
+
+        // One node is null or values differ
+        if (p == null || q == null || p.val != q.val) {
+            return false;
+        }
+
+        // Check left and right subtrees
+        return isSameTree(p.left, q.left) &&
+               isSameTree(p.right, q.right);
+    }
+}
+
+//program 6
+//Symmetric Tree
+
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        return isMirror(root.left, root.right);
+    }
+
+    private boolean isMirror(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+
+        if (p == null ||  q== null) {
+            return false;
+        }
+
+        return (p.val == q.val)
+                && isMirror(p.left, q.right)
+                && isMirror(p.right, q.left);
+    }
+}

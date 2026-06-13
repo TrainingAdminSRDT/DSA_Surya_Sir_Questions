@@ -1,0 +1,51 @@
+//PROGRAM 1//
+class Solution {
+    public int[] runningSum(int[] nums) {
+        for(int i=1;i<nums.length;i++){
+            nums[i]=nums[i]+nums[i-1];
+        } 
+        return nums;       
+    }
+}
+
+//PROGRAM 2//
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        int s=0;
+        for(int i=0;i<k;i++){
+            s+=nums[i];
+        }
+        int ans= s;
+        for(int i=k;i<nums.length;i++){
+            s+=(nums[i]-nums[i-k]);
+            ans = Math.max(ans,s);
+        }
+        return ans*1.0/k;
+
+        }
+}
+//PROGRAM 3//
+class Solution {
+    public int[] getAverages(int[] nums, int k) {
+        int n = nums.length;
+        int[] arr = new int[n];
+        Arrays.fill(arr, -1);
+
+        long sum = 0;
+        int window = 2 * k + 1;
+
+        for (int i = 0; i < n; i++) {
+            sum += nums[i];
+
+            if (i >= window) {
+                sum -= nums[i - window];
+            }
+
+            if (i >= window - 1) {
+                arr[i - k] = (int)(sum / window);
+            }
+        }
+
+        return arr;
+    }
+}
