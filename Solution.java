@@ -1,12 +1,12 @@
+package Day8;
 
-
-class Solution {
-    public int binarySearch(int[] nums, int target) {
-       for(int i=0; i<nums.length; i++){
-        if(nums[i]==target){
-           return i; 
+public class Solution {
+    public int findCenter(int[][] edges) {
+        if (edges[0][0] == edges[1][0] || edges[0][0] == edges[1][1]) {
+            return edges[0][0];
         }
-       }
-       return target; 
+        return edges[0][1];
     }
+}  {
+    
 }
