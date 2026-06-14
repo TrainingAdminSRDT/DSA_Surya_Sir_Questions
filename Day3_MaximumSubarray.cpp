@@ -1,0 +1,17 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+class MaximumSubarray {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int currSum = nums[0];
+        int maxSum = nums[0];
+        for (size_t i = 1; i < nums.size(); i++) {
+            currSum = max(nums[i], nums[i] + currSum);
+            maxSum = max(currSum, maxSum);
+        }
+        return maxSum;
+    }
+};
